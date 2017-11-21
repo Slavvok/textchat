@@ -6,14 +6,14 @@ clients = []
 def clientHandler(c, addr):
     global clients
     user = c.recv(1024).decode()
-    print('New user' + user + addr + 'entered chat')
+    print('New user' + str(user) + str(addr) + 'entered chat')
     try:
         while True:
             data = c.recv(1024).decode()
             if not data:
                 break
-            print('User: ' + user + ' Message: ' + data)
-            message = '[%s] %s' % (user, data)
+            print('User: ' + str(user) + ' Message: ' + str(data))
+            message = '[%s] %s' % (str(user), str(data))
             c.send(message.encode())
     except:
         print ('%s left chat' %(user))
